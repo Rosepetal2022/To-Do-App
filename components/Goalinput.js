@@ -27,7 +27,7 @@ function Goalinput(props) {
                 onChangeText={goalInputHandler}
                 value={enteredGoalText}
             />
-            <Button
+            <Button style={styles.goalButton}
                 title="Add Goal"
                 onPress={addGoalHandler}
             />
@@ -44,15 +44,21 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: 24,
+        paddingRight: 2,
         borderBottomWidth: 1,
-        borderBottomColor: '#cccccc',
+        borderBottomColor: '#324376',
 
     },
     textInput: {
-        borderWidth: 1,
-        borderColor: '#cccccc',
+        borderWidth: 1   ,
+        borderColor: '#324376',
+        backgroundColor: 'white',
         width: '80%',
         marginRight: 8,
         padding: 8,
     },
+    goalButton: {
+        color: 'black',
+        marginRight: 2,
+    }
 })
