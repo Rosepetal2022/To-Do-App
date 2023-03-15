@@ -25,9 +25,9 @@ export default Goalitem;
 
 const styles = StyleSheet.create({
     goalItem: {
-        margin: 8,
+        marginTop: 20,
         borderRadius: 6,
-        backgroundColor: '#04724d'
+        backgroundColor: '#b180f0'
     },
     pressedItem: {
         opacity: 0.5,

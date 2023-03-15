@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import * as React from 'react';
+import { StatusBar } from 'expo-status-bar';
 import {
   StyleSheet,
   View,
@@ -33,10 +33,12 @@ export default function App() {
   };
 
   return (
+    <>
+    <StatusBar style="light" />
     <View style={styles.appContainer} >
       <Button 
       title='Add New Goal' 
-      color="#5e0acc" 
+      color="#a065ec" 
       onPress={startAddGoalHandler} 
       />
       <Goalinput visible={modalIsVisible} onAddGoal={addGoalHandler} onCancel={endAddGoalHandler}/>
@@ -56,15 +58,16 @@ export default function App() {
         />
       </View>
     </View>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
-    paddingTop: 50,
+    paddingTop: 100,
     paddingHorizontal: 16,
-    backgroundColor: '#e3d3e4',
+    backgroundColor: '#1e085a',
   },
   goalsContainer: {
     flex: 5,
