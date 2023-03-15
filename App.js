@@ -3,16 +3,27 @@ import * as React from 'react';
 import {
   StyleSheet,
   View,
-  FlatList
+  FlatList,
+  Button
 } from 'react-native';
 import Goalitem from './components/Goalitem';
 import Goalinput from './components/Goalinput';
 
 export default function App() {
+  const [modalIsVisible, setModalIsVisible] = useState(false);
   const [courseGoals, setCourseGoals] = useState([]);
+
+  function startAddGoalHandler() {
+    setModalIsVisible(true);
+  }
+
+  function endAddGoalHandler() {
+    setModalIsVisible(false);
+  }
 
   function addGoalHandler(enteredGoalText) {
     setCourseGoals(currentCourseGoals => [...currentCourseGoals, { text: enteredGoalText, id: Math.random().toString() }]);
+    setModalIsVisible(false);
   }
 
   function deleteGoalHandler(id) {
@@ -23,7 +34,12 @@ export default function App() {
 
   return (
     <View style={styles.appContainer} >
-      <Goalinput onAddGoal={addGoalHandler} />
+      <Button 
+      title='Add New Goal' 
+      color="#5e0acc" 
+      onPress={startAddGoalHandler} 
+      />
+      <Goalinput visible={modalIsVisible} onAddGoal={addGoalHandler} onCancel={endAddGoalHandler}/>
       <View style={styles.goalsContainer}>
         <FlatList data={courseGoals} renderItem={(itemData) => {
           return (
@@ -31,7 +47,6 @@ export default function App() {
             text={itemData.item.text} 
             id={itemData.item.id} 
             onDeleteItem={deleteGoalHandler}
-            
             />
           );
         }} 
